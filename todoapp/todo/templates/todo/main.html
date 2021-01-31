@@ -5,11 +5,30 @@
 {% block content %}
 <div id='root'>
     {% include "navbar.html" %}
+
     <div class="container" id="main">
+        <div class="d-none" role="alert" id=resultAlert>
+        </div>
+        <form id="createItemForm" method="post" action="{% url 'todo:todo-create' %}" class='mt-1 mb-3'>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-11">
+                    <input id="titleInput" required name='title' type="text" class="form-control" placeholder="Title"
+                        aria-label="title">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+        <div id="list">
+
+        </div>
     </div>
 </div>
 {% endblock content %}
 
 {% block script %}
+<script src="{% static 'todo/functions.js' %}"></script>
 <script src="{% static 'todo/main.js' %}"></script>
 {% endblock script %}

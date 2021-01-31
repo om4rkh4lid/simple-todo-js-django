@@ -8,7 +8,7 @@ class TodoItem(models.Model):
     is_done = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['-id', 'is_done']
+        ordering = ['is_done', '-id']
 
     def __str__(self):
         return self.title
